@@ -18,6 +18,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // initialze the player
         self.player = self.childNode(withName: "player") as? SKSpriteNode
         
+        // setup physics for the player
+//            self.player.physicsBody = SKPhysicsBody(edgeFrom: <#T##CGPoint#>, to: <#T##CGPoint#>)
+//
+//            self.player.physicsBody?.categoryBitMask = 1
+//            self.player.physicsBody?.collisionBitMask = 4
+//            self.player.physicsBody?.contactTestBitMask = 10
+        
         
     }
     override func update(_ currentTime: TimeInterval) {
@@ -59,14 +66,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                    // move right
                     self.player.position.x = self.player.position.x + PLAYER_SPEED
                }
-        
-        
+
        }
     
     // detect when collision occurs
     func didBegin(_ contact: SKPhysicsContact) {
         
+        let nodeA = contact.bodyA.node
+        let nodeB = contact.bodyB.node
         
+        if (nodeA == nil || nodeB == nil) {
+            return
+        }
+        
+        if (nodeA!.name == "player" && nodeB!.name == "enemy") {
+            // player die
+            print("RESETTING POSITION-AAAA")
+            //restartPlayer()
+        }
+        if (nodeA!.name == "enemy" && nodeB!.name == "player") {
+            print("RESETTING POSITION-BBBBB")
+            // player die
         
     }
+}
 }
