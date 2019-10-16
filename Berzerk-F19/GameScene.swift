@@ -101,7 +101,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             print("RESETTING POSITION-BBBBB")
             self.restartPlayer()
             // player die
+            
+        }
+//            if (nodeA!.name == "exit" && nodeB!.name == "player") {
+//                       // output game win
+//                       print("GAME WIN!")
+//                       print("GOING TO LEVEL 2")
+//                      // show new LEVEL
+//                     }
         
+            if (nodeA!.name == "player" && nodeB!.name == "exit") {
+                           // output game win
+                           print("GAME WIN!")
+                           print("GOING TO LEVEL 2")
+                          // show new LEVEL
+                         }
+        
+        if (nodeA!.name == "exit" && nodeB!.name == "player") {
+          // output game win
+          print("GAME WIN!")
+          print("GOING TO LEVEL 2")
+         // show new LEVEL
+        }
+        
+        }
+            
     }
-}
-}
+
+
