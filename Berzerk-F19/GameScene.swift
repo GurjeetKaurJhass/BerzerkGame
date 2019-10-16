@@ -25,15 +25,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //            self.player.physicsBody?.collisionBitMask = 4
 //            self.player.physicsBody?.contactTestBitMask = 10
         
-        
-    }
+        let moveLeftAction = SKAction.moveBy(
+            x: -400, y: 0, duration: 15)
+        self.enumerateChildNodes(withName: "enemy") {
+            (node, stop) in
+            let enemy = node as! SKSpriteNode
+            enemy.run(moveLeftAction)
+        }}
     override func update(_ currentTime: TimeInterval) {
         
     }
     
     
     
-    
+    func restartPlayer() {
+           // hide player from screen
+            self.player.removeFromParent()
+           // restart player in starting position
+           player.position = CGPoint(x:96, y:220)
+           // show player again
+            addChild(player)
+        }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
          // GET THE POSITION WHERE THE MOUSE WAS CLICKED
@@ -82,10 +94,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if (nodeA!.name == "player" && nodeB!.name == "enemy") {
             // player die
             print("RESETTING POSITION-AAAA")
+            self.restartPlayer()
             //restartPlayer()
         }
         if (nodeA!.name == "enemy" && nodeB!.name == "player") {
             print("RESETTING POSITION-BBBBB")
+            self.restartPlayer()
             // player die
         
     }
