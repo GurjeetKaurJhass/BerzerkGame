@@ -114,6 +114,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                            // output game win
                            print("GAME WIN!")
                            print("GOING TO LEVEL 2")
+                
+                
+                
+                
+                
+                
                           // show new LEVEL
                          }
         
@@ -121,6 +127,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
           // output game win
           print("GAME WIN!")
           print("GOING TO LEVEL 2")
+            
+            if let scene = SKScene(fileNamed: "level2") {
+                scene.scaleMode = .aspectFill
+                 // OPTION 1: Change screens with an animation
+                self.view?.presentScene(scene, transition: SKTransition.flipVertical(withDuration: 2.5))
+                 // OPTION 2: Change screens with no animation
+                //self.view?.presentScene(scene
+            }
          // show new LEVEL
         }
         
